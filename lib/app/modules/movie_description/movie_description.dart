@@ -1,4 +1,5 @@
 import 'package:desafio_mobile2you/app/core/ui/like_icon.dart';
+import 'package:desafio_mobile2you/app/core/ui/popularity_icon.dart';
 import 'package:desafio_mobile2you/app/modules/movie_card/movie_card.dart';
 import 'package:flutter/material.dart';
 
@@ -62,11 +63,7 @@ class MovieDescription extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 20.0),
-              const Icon(
-                Icons.circle,
-                color: Colors.white,
-                size: 20.0,
-              ),
+              const PopularityIcon(popularity: 10.0),
               const SizedBox(width: 8.0),
               Text(
                 '<popularity> view',
