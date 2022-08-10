@@ -1,3 +1,4 @@
+import 'package:desafio_mobile2you/app/core/ui/like_icon.dart';
 import 'package:desafio_mobile2you/app/modules/movie_card/movie_card.dart';
 import 'package:flutter/material.dart';
 
@@ -39,10 +40,7 @@ class MovieDescription extends StatelessWidget {
               Expanded(
                 child: Align(
                   alignment: Alignment.centerRight,
-                  child: Icon(
-                    Icons.heart_broken,
-                    color: Colors.white,
-                  ),
+                  child: LikeIcon(),
                 ),
               )
             ],
@@ -51,7 +49,7 @@ class MovieDescription extends StatelessWidget {
           Row(
             children: [
               const Icon(
-                Icons.heart_broken,
+                Icons.favorite,
                 color: Colors.white,
                 size: 20.0,
               ),
