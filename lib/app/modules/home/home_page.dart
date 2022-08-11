@@ -35,21 +35,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-/*
-ShaderMask(
-  shaderCallback: (rect) {
-    return LinearGradient(
-      begin: Alignment.topCenter,
-      end: Alignment.bottomCenter,
-      colors: [Colors.black, Colors.transparent],
-    ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
-  },
-  blendMode: BlendMode.dstIn,
-  child: Image.asset(
-    'assets/chrome.png',
-    height: 400,
-    fit: BoxFit.contain,
-  ),
-),
-*/
