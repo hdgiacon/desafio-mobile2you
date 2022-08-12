@@ -11,14 +11,16 @@ class HomePageCubit extends Cubit<HomePageState> {
         super(HomePageStateInitial());
 
   void getMovieData() async {
-    final data = await _movieDescriptionService.getMovie();
+    final dataMovie = await _movieDescriptionService.getMovie();
+
+    final dataSimilarMovie = await _movieDescriptionService.getSimilarMovie();
 
     emit(HomePageStateData(
-      movieTitle: data['original_title'],
-      numLikes: data['vote_count'],
-      numPopularityView: data['popularity'],
-      listMovie: 'similar',
-      urlImage: data['poster_path'],
+      movieTitle: dataMovie['original_title'],
+      numLikes: dataMovie['vote_count'],
+      numPopularityView: dataMovie['popularity'],
+      listSimilarMovie: dataSimilarMovie,
+      urlImage: dataMovie['poster_path'],
     ));
   }
 }

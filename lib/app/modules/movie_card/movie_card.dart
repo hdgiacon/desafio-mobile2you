@@ -1,41 +1,48 @@
 import 'package:flutter/material.dart';
 
 class MovieCard extends StatelessWidget {
-  const MovieCard({super.key});
+  final String similarPosterPath;
+  final String similarName;
+  final String similarYear;
+
+  const MovieCard({
+    super.key,
+    required this.similarPosterPath,
+    required this.similarName,
+    required this.similarYear,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      trailing: const Icon(
-        Icons.circle_notifications,
-        color: Colors.white,
-        size: 15.0,
-      ),
-      leading: const Icon(
-        Icons.alarm,
-        color: Colors.white,
-      ),
-      title: const Text(
-        'Nome',
-        style: TextStyle(
-          color: Colors.white,
-        ),
-      ),
-      subtitle: Row(
-        children: const [
-          Text(
-            'year',
-            style: TextStyle(
-              color: Colors.white,
-            ),
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * .1,
+      child: Row(
+        children: [
+          Image.network(
+            'https://image.tmdb.org/t/p/original/$similarPosterPath',
           ),
-          SizedBox(width: 8.0),
-          Text(
-            'Gender',
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
+          const SizedBox(width: 15.0),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                similarName,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  overflow: TextOverflow.clip,
+                ),
+              ),
+              const SizedBox(height: 5.0),
+              Text(
+                similarYear,
+                style: TextStyle(
+                  color: Colors.grey[400],
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );

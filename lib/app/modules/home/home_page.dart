@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
                     movieTitle: state.movieTitle,
                     numLikes: state.numLikes,
                     numPopularityView: state.numPopularityView,
-                    listMovie: state.listMovie,
+                    listSimilarMovie: state.listSimilarMovie,
                   )
                 ],
               );

@@ -7,31 +7,18 @@ class MovieDescription extends StatelessWidget {
   final String movieTitle;
   final int numLikes;
   final double numPopularityView;
-  final String listMovie;
+  final List listSimilarMovie;
 
   const MovieDescription({
     super.key,
     required this.movieTitle,
     required this.numLikes,
     required this.numPopularityView,
-    required this.listMovie,
+    required this.listSimilarMovie,
   });
 
   @override
   Widget build(BuildContext context) {
-    const listCard = [
-      MovieCard(),
-      MovieCard(),
-      MovieCard(),
-      MovieCard(),
-      MovieCard(),
-      MovieCard(),
-      MovieCard(),
-      MovieCard(),
-      MovieCard(),
-      MovieCard(),
-    ];
-
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
@@ -57,7 +44,7 @@ class MovieDescription extends StatelessWidget {
               )
             ],
           ),
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 10.0),
           Row(
             children: [
               const Icon(
@@ -85,12 +72,18 @@ class MovieDescription extends StatelessWidget {
               ),
             ],
           ),
-          ListView.builder(
+          const SizedBox(height: 20.0),
+          ListView.separated(
             padding: EdgeInsets.zero,
             shrinkWrap: true,
-            itemCount: listCard.length,
+            itemCount: listSimilarMovie.length,
+            separatorBuilder: (context, index) => const Divider(),
             itemBuilder: (context, index) {
-              return listCard[index];
+              return MovieCard(
+                similarPosterPath: listSimilarMovie[index]['poster_path'],
+                similarName: listSimilarMovie[index]['original_title'],
+                similarYear: listSimilarMovie[index]['release_date'],
+              );
             },
           )
         ],

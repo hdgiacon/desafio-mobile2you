@@ -21,17 +21,13 @@ void main() {
           primarySwatch: Colors.blue,
         ),
         routes: {
-          '/home': (_) => MultiBlocProvider(
-                providers: [
-                  BlocProvider(
-                    create: (_) => HomePageCubit(
-                      movieDescriptionService: MovieDescriptionServiceImpl(
-                        movieDescriptionRepository:
-                            MovieDescriptionRepositoryImpl(),
-                      ),
-                    )..getMovieData(),
-                  )
-                ],
+          '/home': (_) => BlocProvider(
+                create: (_) => HomePageCubit(
+                  movieDescriptionService: MovieDescriptionServiceImpl(
+                    movieDescriptionRepository:
+                        MovieDescriptionRepositoryImpl(),
+                  ),
+                )..getMovieData(),
                 child: const HomePage(),
               ),
         },
