@@ -1,5 +1,5 @@
-import 'package:desafio_mobile2you/app/modules/home/home_page_cubit.dart';
-import 'package:desafio_mobile2you/app/modules/movie_description/movie_description.dart';
+import 'package:desafio_mobile2you/app/modules/home/cubit/home_page_cubit.dart';
+import 'package:desafio_mobile2you/app/modules/movie_basic_data/movie_description_module.dart';
 import 'package:desafio_mobile2you/app/modules/movie_image/movie_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,11 +19,17 @@ class HomePage extends StatelessWidget {
                 return Column(
                   children: [
                     MovieImage(urlImage: state.urlImage),
+                    /*
                     MovieDescription(
                       movieTitle: state.movieTitle,
                       numLikes: state.numLikes,
                       numPopularityView: state.numPopularityView,
-                      listSimilarMovie: state.listSimilarMovie,
+                    )
+										*/
+                    MovieDescriptionModule(
+                      movieTitle: state.movieTitle,
+                      numLikes: state.numLikes,
+                      numPopularityView: state.numPopularityView,
                     )
                   ],
                 );

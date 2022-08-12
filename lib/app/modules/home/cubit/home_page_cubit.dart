@@ -15,13 +15,10 @@ class HomePageCubit extends Cubit<HomePageState> {
 
     final dataMovie = await _movieDescriptionService.getMovie();
 
-    final dataSimilarMovie = await _movieDescriptionService.getSimilarMovie();
-
     emit(HomePageStateData(
       movieTitle: dataMovie['original_title'],
       numLikes: dataMovie['vote_count'],
       numPopularityView: dataMovie['popularity'],
-      listSimilarMovie: dataSimilarMovie,
       urlImage: dataMovie['poster_path'],
     ));
   }
