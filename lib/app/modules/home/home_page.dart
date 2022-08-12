@@ -1,5 +1,8 @@
+import 'package:desafio_mobile2you/app/modules/home/home_page_cubit.dart';
 import 'package:desafio_mobile2you/app/modules/movie_description/movie_description.dart';
+import 'package:desafio_mobile2you/app/modules/movie_image/movie_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -9,27 +12,27 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xff0b0b0b),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ShaderMask(
-              shaderCallback: (rect) {
-                return const LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.black,
-                    Colors.black,
-                    Colors.transparent,
-                  ],
-                ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
-              },
-              blendMode: BlendMode.dstIn,
-              child: Image.network(
-                'https://img.quizur.com/f/img5ed39b57c38e26.32086864.jpg?lastEdited=1590926178',
-              ),
-            ),
-            const MovieDescription(),
-          ],
+        child: BlocBuilder<HomePageCubit, HomePageState>(
+          builder: (context, state) {
+            if (state is HomePageStateData) {
+              return Column(
+                children: [
+                  MovieImage(urlImage: state.urlImage),
+                  MovieDescription(
+                    movieTitle: state.movieTitle,
+                    numLikes: state.numLikes,
+                    numPopularityView: state.numPopularityView,
+                    listMovie: state.listMovie,
+                  )
+                ],
+              );
+            }
+
+            return const Text(
+              'Nenhum dado foi buscado',
+              style: TextStyle(color: Colors.white),
+            );
+          },
         ),
       ),
     );

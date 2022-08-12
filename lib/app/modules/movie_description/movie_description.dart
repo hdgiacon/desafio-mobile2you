@@ -4,7 +4,18 @@ import 'package:desafio_mobile2you/app/modules/movie_card/movie_card.dart';
 import 'package:flutter/material.dart';
 
 class MovieDescription extends StatelessWidget {
-  const MovieDescription({super.key});
+  final String movieTitle;
+  final int numLikes;
+  final double numPopularityView;
+  final String listMovie;
+
+  const MovieDescription({
+    super.key,
+    required this.movieTitle,
+    required this.numLikes,
+    required this.numPopularityView,
+    required this.listMovie,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,18 +38,18 @@ class MovieDescription extends StatelessWidget {
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Expanded(
                 child: Text(
-                  'The Very Best of Johnny Depp',
-                  style: TextStyle(
+                  movieTitle,
+                  style: const TextStyle(
                     fontSize: 25.0,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              Expanded(
+              const Expanded(
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: LikeIcon(),
@@ -56,7 +67,7 @@ class MovieDescription extends StatelessWidget {
               ),
               const SizedBox(width: 8.0),
               Text(
-                '<vote count> Likes',
+                '$numLikes Likes',
                 style: TextStyle(
                   color: Colors.grey[400],
                   fontSize: 12.0,
@@ -66,7 +77,7 @@ class MovieDescription extends StatelessWidget {
               const PopularityIcon(popularity: 10.0),
               const SizedBox(width: 8.0),
               Text(
-                '<popularity> view',
+                '$numPopularityView view',
                 style: TextStyle(
                   color: Colors.grey[400],
                   fontSize: 12.0,
