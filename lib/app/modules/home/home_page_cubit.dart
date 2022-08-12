@@ -11,6 +11,8 @@ class HomePageCubit extends Cubit<HomePageState> {
         super(HomePageStateInitial());
 
   void getMovieData() async {
+    emit(HomePageStateLoading());
+
     final dataMovie = await _movieDescriptionService.getMovie();
 
     final dataSimilarMovie = await _movieDescriptionService.getSimilarMovie();

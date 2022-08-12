@@ -4,6 +4,8 @@ abstract class HomePageState {}
 
 class HomePageStateInitial extends HomePageState {}
 
+class HomePageStateLoading extends HomePageState {}
+
 class HomePageStateData extends HomePageState {
   final String movieTitle;
   final int numLikes;

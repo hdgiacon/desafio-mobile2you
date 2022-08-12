@@ -11,28 +11,34 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xff0b0b0b),
-      body: SingleChildScrollView(
-        child: BlocBuilder<HomePageCubit, HomePageState>(
-          builder: (context, state) {
-            if (state is HomePageStateData) {
-              return Column(
-                children: [
-                  MovieImage(urlImage: state.urlImage),
-                  MovieDescription(
-                    movieTitle: state.movieTitle,
-                    numLikes: state.numLikes,
-                    numPopularityView: state.numPopularityView,
-                    listSimilarMovie: state.listSimilarMovie,
-                  )
-                ],
-              );
-            }
+      body: Center(
+        child: SingleChildScrollView(
+          child: BlocBuilder<HomePageCubit, HomePageState>(
+            builder: (context, state) {
+              if (state is HomePageStateData) {
+                return Column(
+                  children: [
+                    MovieImage(urlImage: state.urlImage),
+                    MovieDescription(
+                      movieTitle: state.movieTitle,
+                      numLikes: state.numLikes,
+                      numPopularityView: state.numPopularityView,
+                      listSimilarMovie: state.listSimilarMovie,
+                    )
+                  ],
+                );
+              } else if (state is HomePageStateLoading) {
+                return const CircularProgressIndicator(
+                  color: Colors.white,
+                );
+              }
 
-            return const Text(
-              'Nenhum dado foi buscado',
-              style: TextStyle(color: Colors.white),
-            );
-          },
+              return const Text(
+                'Nenhum dado foi buscado',
+                style: TextStyle(color: Colors.white),
+              );
+            },
+          ),
         ),
       ),
     );
