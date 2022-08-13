@@ -8,7 +8,7 @@ class MovieDescriptionStateLoading extends MovieDescriptionState {}
 
 class MovieDescriptionStateData extends MovieDescriptionState {
   final List similarMovieData;
-  final List<List<String>> similarGenres;
+  final List<String> similarGenres;
 
   MovieDescriptionStateData({
     required this.similarMovieData,

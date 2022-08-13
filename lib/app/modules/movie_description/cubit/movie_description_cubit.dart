@@ -17,7 +17,7 @@ class MovieDescriptionCubit extends Cubit<MovieDescriptionState> {
     final dataSimilarMovie = await _movieDescriptionService.getSimilarMovie();
     final allGenres = await _movieDescriptionService.getAllGenres();
 
-    final similarGenres = <List<String>>[];
+    final similarGenres = <String>[];
 
     final aux = <String>[];
     String gender;
@@ -31,7 +31,8 @@ class MovieDescriptionCubit extends Cubit<MovieDescriptionState> {
 
         aux.add(gender);
       });
-      similarGenres.add([...aux]);
+
+      similarGenres.add([...aux].join(', '));
       aux.clear();
     }
 
