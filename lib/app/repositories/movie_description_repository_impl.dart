@@ -36,4 +36,21 @@ class MovieDescriptionRepositoryImpl implements MovieDescriptionRepository {
       throw DioError;
     }
   }
+
+  @override
+  Future<List> getAllGenres() async {
+    try {
+      Response<Map> response = await Dio().get(
+        'https://api.themoviedb.org/3/genre/movie/list?api_key=d64b6208431075fda705663b97902386&language=en-US',
+      );
+
+      return response.data!['genres'];
+    } on DioError catch (e, s) {
+      if (e.type == DioErrorType.receiveTimeout) {
+        log('Sem resposta da API', error: e, stackTrace: s);
+      }
+
+      throw DioError;
+    }
+  }
 }

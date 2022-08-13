@@ -14,4 +14,7 @@ class MovieDescriptionServiceImpl implements MovieDescriptionService {
   @override
   Future<List> getSimilarMovie() =>
       _movieDescriptionRepository.getSimilarMovie();
+
+  @override
+  Future<List> getAllGenres() => _movieDescriptionRepository.getAllGenres();
 }
