@@ -23,7 +23,10 @@ class MovieImage extends StatelessWidget {
         ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
       },
       blendMode: BlendMode.dstIn,
-      child: Image.network('https://image.tmdb.org/t/p/original/$urlImage'),
+      child: Image.network(
+        'https://image.tmdb.org/t/p/original/$urlImage',
+        fit: BoxFit.fill,
+      ),
     );
   }
 }
