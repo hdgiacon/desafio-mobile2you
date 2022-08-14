@@ -76,6 +76,7 @@ class MovieDescription extends StatelessWidget {
               if (state is MovieDescriptionStateData) {
                 return ListView.separated(
                   padding: EdgeInsets.zero,
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: state.similarMovieData.length,
                   separatorBuilder: (context, index) => const Divider(),
