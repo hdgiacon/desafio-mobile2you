@@ -17,28 +17,40 @@ class MovieDescriptionCubit extends Cubit<MovieDescriptionState> {
     final dataSimilarMovie = await _movieDescriptionService.getSimilarMovie();
     final allGenres = await _movieDescriptionService.getAllGenres();
 
+    var currentGenres = <String>[];
+
     final similarGenres = <String>[];
 
-    final aux = <String>[];
-    String gender;
-
     for (var movie in dataSimilarMovie) {
-      movie['release_date'] = movie['release_date'].split('-')[0];
+      movie['release_date'] = _getYear(movie);
 
-      movie['genre_ids'].forEach((movieGenderId) {
-        gender = allGenres[allGenres
-            .indexWhere((genre) => genre['id'] == movieGenderId)]['name'];
+      currentGenres = _getGenres(movie, allGenres);
 
-        aux.add(gender);
-      });
-
-      similarGenres.add([...aux].join(', '));
-      aux.clear();
+      similarGenres.add([...currentGenres].join(', '));
+      currentGenres.clear();
     }
 
     emit(MovieDescriptionStateData(
       similarMovieData: dataSimilarMovie,
       similarGenres: similarGenres,
     ));
+  }
+
+  dynamic _getYear(dynamic movie) {
+    return movie['release_date'].split('-')[0];
+  }
+
+  List<String> _getGenres(dynamic movie, List<dynamic> allGenres) {
+    String genre;
+    final currentGenres = <String>[];
+
+    movie['genre_ids'].forEach((movieGenderId) {
+      genre = allGenres[allGenres
+          .indexWhere((genre) => genre['id'] == movieGenderId)]['name'];
+
+      currentGenres.add(genre);
+    });
+
+    return currentGenres;
   }
 }

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(
     DevicePreview(
-      enabled: kReleaseMode,
+      enabled: !kReleaseMode,
       backgroundColor: const Color(0xff2e2e2e),
       builder: (context) => MaterialApp(
         useInheritedMediaQuery: true,
