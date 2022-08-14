@@ -25,7 +25,7 @@ class MovieImage extends StatelessWidget {
       blendMode: BlendMode.dstIn,
       child: Image.network(
         'https://image.tmdb.org/t/p/original/$urlImage',
-        fit: BoxFit.fill,
+        fit: BoxFit.cover,
       ),
     );
   }

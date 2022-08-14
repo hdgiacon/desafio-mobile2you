@@ -1,17 +1,12 @@
+import 'package:desafio_mobile2you/app/models/similar_movie_model.dart';
 import 'package:flutter/material.dart';
 
 class SimilarMovieCard extends StatelessWidget {
-  final String similarPosterPath;
-  final String similarName;
-  final String similarYear;
-  final String similarGenres;
+  final SimilarMovieModel similarModel;
 
   const SimilarMovieCard({
     super.key,
-    required this.similarPosterPath,
-    required this.similarName,
-    required this.similarYear,
-    required this.similarGenres,
+    required this.similarModel,
   });
 
   @override
@@ -21,7 +16,7 @@ class SimilarMovieCard extends StatelessWidget {
       child: Row(
         children: [
           Image.network(
-            'https://image.tmdb.org/t/p/original/$similarPosterPath',
+            'https://image.tmdb.org/t/p/original/${similarModel.posterPath}',
           ),
           const SizedBox(width: 15.0),
           Column(
@@ -32,7 +27,7 @@ class SimilarMovieCard extends StatelessWidget {
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width * .7,
                   child: Text(
-                    similarName,
+                    similarModel.title,
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18.0,
@@ -45,7 +40,7 @@ class SimilarMovieCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    similarYear,
+                    similarModel.releaseYear,
                     style: TextStyle(
                       color: Colors.grey[400],
                     ),
@@ -54,7 +49,7 @@ class SimilarMovieCard extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .6,
                     child: Text(
-                      similarGenres,
+                      similarModel.similarGenres,
                       style: TextStyle(
                         color: Colors.grey[400],
                       ),

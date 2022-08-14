@@ -20,8 +20,6 @@ class HomePage extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 slivers: [
                   SliverAppBar(
-                    //forceElevated: true,
-                    //elevation: 10.0,
                     stretch: true,
                     backgroundColor: Colors.transparent,
                     expandedHeight: MediaQuery.of(context).size.height * .6,
@@ -46,20 +44,6 @@ class HomePage extends StatelessWidget {
                   )
                 ],
               );
-              /*
-							Column(
-                children: [
-                  MovieImage(urlImage: state.urlImage),
-                  MovieDescriptionModule(
-                    movieModel: MovieModel(
-                      movieTitle: state.movieTitle,
-                      numLikes: state.numLikes,
-                      numPopularityView: state.numPopularityView,
-                    ),
-                  )
-                ],
-              );
-							*/
             } else if (state is HomePageStateLoading) {
               return const CircularProgressIndicator(
                 color: Colors.white,

@@ -1,6 +1,7 @@
 import 'package:desafio_mobile2you/app/core/ui/like_icon.dart';
 import 'package:desafio_mobile2you/app/core/ui/popularity_icon.dart';
 import 'package:desafio_mobile2you/app/models/movie_model.dart';
+import 'package:desafio_mobile2you/app/models/similar_movie_model.dart';
 import 'package:desafio_mobile2you/app/modules/movie_description/cubit/movie_description_cubit.dart';
 import 'package:desafio_mobile2you/app/modules/similar_movie_card/similar_movie_card.dart';
 import 'package:flutter/material.dart';
@@ -80,13 +81,14 @@ class MovieDescription extends StatelessWidget {
                   separatorBuilder: (context, index) => const Divider(),
                   itemBuilder: (context, index) {
                     return SimilarMovieCard(
-                      similarPosterPath: state.similarMovieData[index]
-                          ['poster_path'],
-                      similarName: state.similarMovieData[index]
-                          ['original_title'],
-                      similarYear: state.similarMovieData[index]
-                          ['release_date'],
-                      similarGenres: state.similarGenres[index],
+                      similarModel: SimilarMovieModel(
+                        posterPath: state.similarMovieData[index]
+                            ['poster_path'],
+                        title: state.similarMovieData[index]['original_title'],
+                        releaseYear: state.similarMovieData[index]
+                            ['release_date'],
+                        similarGenres: state.similarGenres[index],
+                      ),
                     );
                   },
                 );
