@@ -32,6 +32,6 @@ Toda a condificação do projeto está na pasta **app**, que está estruturada p
 
 Este projeto tem uma branch chamada **new-feature** que contém uma implementação de lista infinita para a lista de filmes similares.
 
-    A ideia desta implementação é, ao rolar ao final da lista de filmes, novos filmes similares apareceram em seguida, seguindo o endpoint "page" da API, no qual cada page possui 20 filmes, dessa forma, a cada nova chamada, 20 filmes similares são adicionados à lista.
+>A ideia desta implementação é, ao rolar ao final da lista de filmes, novos filmes similares apareceram em seguida, seguindo o *endpoint* **"page"** da API, no qual cada page possui 20 filmes, dessa forma, a cada nova chamada, 20 filmes similares são adicionados à lista.
 
-    Infelizmente essa funcionalidade possui um bug, no qual o listener do ScrollController, colocado dentro do BlocConsumer, está sendo chamado antes de chegar ao final da lista, creio que isso seja alguma interação entre SliverAppBar/CustomScrollView e a ListView, mas infelizmente não consegui corrigir esse bug.
+>Infelizmente essa funcionalidade possui um bug, no qual o listener do **ScrollController**, colocado dentro do **BlocConsumer**, está sendo chamado antes de chegar ao final da lista, creio que isso seja alguma interação entre *SliverAppBar/CustomScrollView* e a *ListView*, mas infelizmente não consegui corrigir esse bug.
