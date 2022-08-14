@@ -11,10 +11,11 @@ class MovieDescriptionCubit extends Cubit<MovieDescriptionState> {
       : _movieDescriptionService = movieDescriptionService,
         super(MovieDescriptionStateInitial());
 
-  void getSimilarMovieData() async {
+  void getSimilarMovieData(List previousList, int page) async {
     emit(MovieDescriptionStateLoading());
 
-    final dataSimilarMovie = await _movieDescriptionService.getSimilarMovie();
+    final dataSimilarMovie =
+        await _movieDescriptionService.getSimilarMovie(previousList, page);
     final allGenres = await _movieDescriptionService.getAllGenres();
 
     final similarGenres = <String>[];
@@ -36,9 +37,12 @@ class MovieDescriptionCubit extends Cubit<MovieDescriptionState> {
       aux.clear();
     }
 
+    var newPage = page + 1;
+
     emit(MovieDescriptionStateData(
       similarMovieData: dataSimilarMovie,
       similarGenres: similarGenres,
+      page: newPage,
     ));
   }
 }

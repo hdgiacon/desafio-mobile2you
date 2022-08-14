@@ -21,7 +21,7 @@ class MovieDescriptionModule extends StatelessWidget {
         movieDescriptionService: MovieDescriptionServiceImpl(
           movieDescriptionRepository: MovieDescriptionRepositoryImpl(),
         ),
-      )..getSimilarMovieData(),
+      )..getSimilarMovieData([], 1),
       child: MovieDescription(
         movieModel: movieModel,
       ),

@@ -21,10 +21,10 @@ class MovieDescriptionRepositoryImpl implements MovieDescriptionRepository {
   }
 
   @override
-  Future<List> getSimilarMovie() async {
+  Future<List> getSimilarMovie(List previousList, int page) async {
     try {
       Response<Map> response = await Dio().get(
-        'https://api.themoviedb.org/3/movie/550/similar?api_key=d64b6208431075fda705663b97902386&language=en-US&page=1',
+        'https://api.themoviedb.org/3/movie/550/similar?api_key=d64b6208431075fda705663b97902386&language=en-US&page=$page',
       );
 
       return response.data!['results'];
