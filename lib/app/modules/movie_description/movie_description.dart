@@ -1,4 +1,4 @@
-import 'package:desafio_mobile2you/app/core/ui/like_icon.dart';
+import 'package:desafio_mobile2you/app/core/ui/like_icon/like_icon_module.dart';
 import 'package:desafio_mobile2you/app/core/ui/popularity_icon.dart';
 import 'package:desafio_mobile2you/app/models/movie_model.dart';
 import 'package:desafio_mobile2you/app/models/similar_movie_model.dart';
@@ -37,7 +37,7 @@ class MovieDescription extends StatelessWidget {
               const Expanded(
                 child: Align(
                   alignment: Alignment.centerRight,
-                  child: LikeIcon(),
+                  child: LikeIconModule(),
                 ),
               )
             ],

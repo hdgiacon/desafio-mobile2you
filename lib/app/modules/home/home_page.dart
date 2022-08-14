@@ -10,8 +10,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = ScrollController();
-
+    //final controller = ScrollController();
+    //TODO: testar sem esse controller
     return Scaffold(
       backgroundColor: const Color(0xff0b0b0b),
       body: Center(
@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
           builder: (context, state) {
             if (state is HomePageStateData) {
               return CustomScrollView(
-                controller: controller,
+                //controller: controller,
                 physics: const BouncingScrollPhysics(),
                 slivers: [
                   SliverAppBar(
